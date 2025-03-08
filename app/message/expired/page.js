@@ -1,4 +1,11 @@
 // filepath: c:\WebTech\ghostnote\app\message\expired\page.js
+
+import { generateMetadata } from "@/components/Meta";
+
+export const metadata = generateMetadata({
+  title: "Expired",
+  description: "Oops! This message has expired and is no longer available.",
+});
 export default function ExpiredMessagePage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-6">

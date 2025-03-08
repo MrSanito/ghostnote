@@ -1,4 +1,11 @@
 import Link from "next/link";
+import { generateMetadata } from "@/components/Meta";
+
+export const metadata = generateMetadata({
+  title: "Home",
+  description:
+    "Welcome to Ghost Note - Share anonymous confessions and messages.",
+});
 
 const Home = () => {
   return (

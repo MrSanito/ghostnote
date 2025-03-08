@@ -1,3 +1,10 @@
+import { generateMetadata } from "@/components/Meta";
+
+export const metadata = generateMetadata({
+  title: "About",
+  description: "Learn more about Ghost Note and how it works.",
+});
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-white p-6">
