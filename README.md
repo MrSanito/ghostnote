@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+📜 GhostNote - Project Overview
+GhostNote is an anonymous confession and secret message platform built using Next.js App Router, MongoDB, and Redis. It allows users to post public confessions and send self-destructing secret messages that automatically expire after being read or after 24 hours.
 
-## Getting Started
+📝 Pages & Features
+1️⃣ Home Page (/)
+Simple landing page with a hero section explaining the platform.
+Includes navigation to Confessions and Secret Messages.
+2️⃣ Confessions Page (/confession)
+Users can post anonymous confessions.
+All confessions are publicly visible (no login required).
+API-driven feed that dynamically loads new posts.
+3️⃣ Secret Message Page (/message)
+Users can generate a one-time view secret message.
+Generates a unique link for sharing.
+Message expires in 24 hours if not opened.
+Self-destructs 2 minutes after being opened.
+Live countdown timer shows time left before deletion.
+4️⃣ Expired Message Page (/message/expired)
+If a message has already been viewed or expired, users are redirected here.
+Displays a "Message Expired" notice.
+🛠️ API Endpoints & Functionality
+1️⃣ Confessions API (Public Posts)
+Method	Endpoint	Description
+GET	/api/confession	Fetch all confessions
+POST	/api/confession	Create a new confession
+DELETE	/api/confession/:id	Delete a confession
+2️⃣ Secret Messages API (Self-Destructing)
+Method	Endpoint	Description
+POST	/api/message	Create a new secret message
+GET	/api/message/:id	Retrieve message (deletes after reading)
+DELETE	/api/message/:id	Manually delete a message
+🔹 Expiration Logic:
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Messages are stored in MongoDB with a TTL index (expiresAt field).
+If a message is not opened within 24 hours, it automatically deletes itself.
+When a user opens the message, a 2-minute timer starts before auto-deletion.
+Redis is used for fast access and temporary storage of opened messages.
+🔍 SEO & Metadata
+Dynamic metadata using generateMetadata() for every page.
+SEO-optimized titles & descriptions for confessions and messages.
+Each message page has unique metadata for better sharing and indexing.
+✅ Summary
+Anonymous confessions ✅
+One-time secret messages ✅
+Self-destructing after reading ✅
+24-hour auto-expiry ✅
+Live countdown timer ✅
+MongoDB TTL + Redis for storage ✅
+SEO-optimized metadata ✅
+This project is fully functional and ready for scaling & further enhancements. 🚀
