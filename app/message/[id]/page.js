@@ -45,11 +45,13 @@ export default function MessagePage() {
         } else {
           console.error("❌ API Error:", data.error);
           setError(data.error);
+          router.push("/message/expired"); // Redirect if message not found
         }
       } catch (err) {
         setLoading(false);
         setError("Something went wrong.");
         console.error("❌ Fetch Error:", err);
+        router.push("/message/expired"); // Redirect if fetch error occurs
       }
     };
 

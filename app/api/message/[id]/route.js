@@ -1,5 +1,6 @@
 import { connectDB } from "@/lib/db";
 import Message from "@/app/models/Message";
+
 export async function POST(req) {
   try {
     await connectDB();
@@ -32,11 +33,11 @@ export async function POST(req) {
   }
 }
 
-export async function GET(req, { params }) {
+export async function GET(req, context) {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = context.params;
     const message = await Message.findById(id);
 
     if (!message) {
